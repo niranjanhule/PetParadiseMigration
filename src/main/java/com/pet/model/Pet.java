@@ -7,50 +7,48 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "pet")
+public class Pet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(nullable = false)
-	private String aadhaar_no;
-
-	@Column(nullable = false, unique = true)
-	private String email;
+	private int age;
 
 	@Column(nullable = false)
-	private String fname;
+	private String breed;
 
 	@Column(nullable = false)
-	private String lname;
+	private String color;
 
 	@Column(nullable = false)
-	private String password;
+	private String gender;
 
 	@Column(nullable = false)
-	private long phone_no;
-
-	@Column(nullable = false, unique = true)
-	private String username;
+	private String petname;
 
 	@Column(nullable = false)
-	private int usertype;
+	private double price;
 
-	@OneToMany(mappedBy = "user")
-	private List<Pet> pets;
+	@Column(nullable = false)
+	private String status;
 
-	@OneToMany(mappedBy = "buyer")
-	private List<BuySell> buys;
+	@Column(nullable = false)
+	private String type;
 
-	@OneToMany(mappedBy = "seller")
-	private List<BuySell> sells;
+	@ManyToOne
+	private User user;
+
+	@OneToMany(mappedBy = "pet")
+	private List<BuySell> buysell;
 
 }
