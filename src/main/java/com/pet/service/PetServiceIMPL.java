@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.pet.dao.PetDaoImpl;
 import com.pet.model.Pet;
-import com.pet.model.Petregristration;
-import com.pet.model.User;
 
 @Service
 public class PetServiceIMPL implements Petservice {
@@ -16,35 +14,26 @@ public class PetServiceIMPL implements Petservice {
 	@Autowired
 	PetDaoImpl petDaoImpl;
 
-	public List<Pet> getAllPetsInformation() {
+	public List<Pet> viewPets() {
 
-		return petDaoImpl.getAllPetsInformation();
+		return petDaoImpl.viewPets();
 	}
 
-	public void updatePetInformation(Pet pet) {
+	public boolean addPet(Pet pet) {
 
-		// pet.setAge(pet.getAge());
-
-		petDaoImpl.updatePetInformation(pet);
+		
+		return true;
 	}
 
-	public void deletePetInformationById(int id, Pet pet) {
+	public void updatepetinformation(Pet pet, int id) {
 
-		petDaoImpl.deletePetInformationById(id, pet);
+		petDaoImpl.updatepetinformation(pet, id);
+
 	}
 
-	public void addPet(Petregristration pet) {
-		petDaoImpl.addPet(pet);
-	}
-
-	public void buyerPetDetails(User user) {
-
-		petDaoImpl.buyerPetDetails(user);
-	}
-
-	public void buyPet(Petregristration pet) {
-
-		petDaoImpl.buyPet(pet);
+	public void deleteDataById(int id) {
+		
+		petDaoImpl.deleteDataById(id);
 	}
 
 }

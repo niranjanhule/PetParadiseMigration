@@ -6,17 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.pet.model.Pet;
-import com.pet.model.Petregristration;
-import com.pet.model.User;
-import com.pet.repo.PetRegRepo;
 import com.pet.repo.PetRepo;
 import com.pet.repo.UserRepo;
 
 @Component
 public class PetDaoImpl implements PetDao {
-
-	@Autowired
-	PetRegRepo petRegRepo;
 
 	@Autowired
 	PetRepo petRepo;
@@ -25,35 +19,23 @@ public class PetDaoImpl implements PetDao {
 
 	UserRepo userRepo;
 
-	public List<Pet> getAllPetsInformation() {
+	public List<Pet> viewPets() {
 
 		return petRepo.findAll();
 	}
 
-	public void updatePetInformation(Pet pet) {
-
+	public boolean addPet(Pet pet) {
 		petRepo.save(pet);
+		return true;
 	}
 
-	public void deletePetInformationById(int id, Pet pet) {
+	public void updatepetinformation(Pet pet, int id) {
+		petRepo.save(pet);
 
+	}
+
+	public void deleteDataById(int id) {
 		petRepo.deleteById(id);
-	}
-
-	public void addPet(Petregristration pet) {
-
-		petRegRepo.save(pet);
-	}
-
-	public void buyerPetDetails(User user) {
-
-		userRepo.save(user);
-	}
-
-	public void buyPet(Petregristration pet) {
-
-		petRegRepo.save(pet);
-
 	}
 
 }

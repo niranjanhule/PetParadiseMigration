@@ -14,7 +14,7 @@ import lombok.Data;
 public class Trainer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int id;
 
 	@Column(nullable = false)
