@@ -16,4 +16,7 @@ public interface PetDao {
 
 	public void deleteDataById(int id);
 
+	public void SignUp(User user);
+	
+	public void SignIn(String email,String password);
 }

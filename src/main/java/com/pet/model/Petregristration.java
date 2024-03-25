@@ -29,5 +29,5 @@ public class Petregristration {
 
 	private String type;
 
-	private int uid;
+//	private int uid;
 }

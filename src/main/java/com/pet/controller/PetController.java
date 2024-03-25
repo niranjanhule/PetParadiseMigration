@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pet.exception.PetAdditionException;
 import com.pet.model.Pet;
 import com.pet.model.Petregristration;
 import com.pet.model.User;
@@ -28,9 +29,15 @@ public class PetController {
 
 	@PostMapping("/addpet")
 	public ResponseEntity<String> addPet(@RequestBody Pet pet) {
-	    petServiceIMPL.addPet(pet);
-		return ResponseEntity.ok("Pet added successfully");
-		//return "Pet Added Successfully";
+	    try {
+			petServiceIMPL.addPet(pet);
+			return ResponseEntity.ok("Pet added. Visit profile to visit");
+		} catch (Exception e) {
+			
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+		
+		
 	}
 
 	
@@ -55,6 +62,9 @@ public class PetController {
 		petServiceIMPL.deleteDataById(id);
 		return ResponseEntity.ok("Delete Suceessfully");
 	}
+	
+	
+	
 	
 	
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.pet.model.Pet;
+import com.pet.model.User;
 import com.pet.repo.PetRepo;
 import com.pet.repo.UserRepo;
 
@@ -36,6 +37,15 @@ public class PetDaoImpl implements PetDao {
 
 	public void deleteDataById(int id) {
 		petRepo.deleteById(id);
+	}
+
+	public void SignUp(User user) {
+
+		userRepo.save(user);
+	}
+
+	public void SignIn(String email, String password) {
+		userRepo.findByEmailAndPassword(email, password);
 	}
 
 }
